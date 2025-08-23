@@ -1,35 +1,142 @@
-<!DOCTYPE html>
-<html>
-  <head> 
-    <style> 
-    </style>
-    </head>
-  <head>
-<body> 
-    <li>
-      
-    </li>
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Currículo — Fulano da Silva</title>
+  <style>
+    :root {
+      --blue: #1e88e5; /* altere o tom de azul se quiser */
+      --text: #222222;
+      --muted: #4b5563;
+      --divider: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      background: #f1f5f9;
+      margin: 0;
+    }
+    body {
+      font-family: Calibri, "Segoe UI", system-ui, Arial, sans-serif;
+      font-size: 12pt; /* pedido: Calibri tamanho 12 */
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .page {
+      width: 210mm;             /* largura A4 */
+      min-height: 297mm;        /* altura A4 */
+      background: #ffffff;
+      margin: 20px auto;        /* centraliza na tela */
+      padding: 18mm;            /* respiro interno semelhante a margens de página */
+      box-shadow: 0 10px 30px rgba(0,0,0,.12);
+      border-radius: 10px;
+    }
+    .header { text-align: center; margin-bottom: 8mm; }
+    .name { font-size: 24pt; font-weight: 700; letter-spacing: .2px; }
+    .contact { margin-top: 3mm; color: var(--muted); font-size: 11pt; }.section { margin-top: 7mm; }
+.section-title {
+  display: inline-block;
+  background: var(--blue);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 999px; /* formato pílula, azul em vez do verde */
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+.section-content { margin-top: 4mm; }
+.list { margin: 0; padding-left: 5mm; }
+.list li { margin: 1.5mm 0; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+
+.job { margin-bottom: 4mm; }
+.job-title { font-weight: 700; }
+.job-meta { color: var(--muted); font-size: 11pt; }
+
+hr { border: none; border-top: 1px solid var(--divider); margin: 6mm 0; }
+
+@media print {
+  html, body { background: #fff; }
+  .page { box-shadow: none; margin: 0; border-radius: 0; }
+  a { color: black; text-decoration: none; }
+}
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <!-- Cabeçalho -->
+    <header class="header">
+      <div class="name">Fulano da Silva</div>
+      <div class="contact">28 anos • Solteiro • (99) 9999-9999 • <a href="mailto:fulano@email.com.br">fulano@email.com.br</a></div>
+    </header><!-- Objetivos -->
+<section class="section">
+  <div class="section-title">Objetivos</div>
+  <div class="section-content">
+    Programação / Análise de Sistemas
+  </div>
+</section>
+
+<!-- Resumo -->
+<section class="section">
+  <div class="section-title">Resumo</div>
+  <div class="section-content">
+    Desenvolvedor com 6 anos de experiência, focado principalmente em PHP. Entusiasta de práticas de Web Design responsivo. Interesse em participar de equipes de desenvolvimento de sistemas web.
+  </div>
+</section>
+
+<!-- Conhecimentos -->
+<section class="section">
+  <div class="section-title">Conhecimentos</div>
+  <div class="section-content two-col">
+    <ul class="list">
+      <li>PHP, MySQL, HTML, CSS3 e JavaScript</li>
+      <li>jQuery e Bootstrap 4</li>
+      <li>JPA / Hibernate</li>
+    </ul>
+    <ul class="list">
+      <li>Spring Data JPA</li>
+      <li>Spring MVC</li>
+      <li>Design responsivo</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Formação Acadêmica -->
+<section class="section">
+  <div class="section-title">Formação Acadêmica</div>
+  <div class="section-content">
+    <ul class="list">
+      <li>Faculdade de Sistemas de Informação — IFMA</li>
+      <li>Inglês Técnico Avançado • Espanhol básico</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Experiências Anteriores -->
+<section class="section">
+  <div class="section-title">Experiências Anteriores</div>
+  <div class="section-content">
+    <div class="job">
+      <div class="job-title">Programador PHP — SoftHouse XYZ</div>
+      <div class="job-meta">a partir de out/2013</div>
+      <div>
+        Participação em migração de um ERP Desktop em Delphi para uma versão Web utilizando PHP e MySQL.
+      </div>
+    </div>
+    <div class="job">
+      <div class="job-title">Empresa XYZ de Web Design</div>
+      <div class="job-meta">nov/2015 – ago/2016 • Desenvolvedor Front-end</div>
+      <div>
+        Desenvolvimento de um portal e-commerce com linguagens HTML5, CSS3 e JavaScript; criação de interfaces responsivas.
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr />
+<footer class="section-content" style="text-align:center; font-size:10pt; color:var(--muted);">
+  Última atualização — 23/08/2025
+</footer>
+
+  </main>
 </body>
-    </head>
-<section>
-  <header> 
-  </header>
-</section>  
-    
-<h1>
-  <header>
-    
-  </header>
-  <body>  
-    
-  </body>
-</h1>
-<h2>CONHECIMENTOS
-  <ul>
-    
-  </ul>
-  <body>  
-    
-  </body>
-</h2>
 </html>
