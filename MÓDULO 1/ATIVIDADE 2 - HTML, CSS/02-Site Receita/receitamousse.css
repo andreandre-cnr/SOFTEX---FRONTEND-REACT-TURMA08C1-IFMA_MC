@@ -1,0 +1,109 @@
+/* =========================
+   Paleta "Mousse de Bacuri"
+   ========================= */
+:root {
+  --bege-mousse: #FDF6EC;
+  --amarelo-bacuri: #EBC17A;
+  --marrom-dourado: #8B5E34;
+  --bacuri-escuro: #6B4226;
+  --dourado-medio: #D9A066;
+  --creme: #FFF9F2;
+  --texto: #4B2E1F;
+}
+
+body {
+  font-family: Calibri, sans-serif;
+  font-size: 14px;
+  background-color: var(--bege-mousse);
+  margin: 0;
+  padding: 0;
+  color: var(--texto);
+}
+
+header {
+  background-color: var(--amarelo-bacuri);
+  padding: 20px;
+  text-align: center;
+}
+
+#titulo {
+  margin: 0;
+  color: var(--marrom-dourado);
+}
+
+.enfase {
+  color: var(--bacuri-escuro);
+}
+
+nav {
+  background-color: var(--dourado-medio);
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin: 0 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: opacity 0.2s ease-in-out;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+.conteudo {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2.subtitulo {
+  color: var(--marrom-dourado);
+  border-bottom: 2px solid var(--dourado-medio);
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+ul, ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: var(--creme);
+}
+
+table th {
+  background-color: var(--amarelo-bacuri);
+  color: var(--texto);
+  padding: 8px;
+}
+
+table td {
+  border: 1px solid var(--dourado-medio);
+  padding: 8px;
+  text-align: center;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--bacuri-escuro);
+  text-align: center;
+  margin-top: 5px;
+}
