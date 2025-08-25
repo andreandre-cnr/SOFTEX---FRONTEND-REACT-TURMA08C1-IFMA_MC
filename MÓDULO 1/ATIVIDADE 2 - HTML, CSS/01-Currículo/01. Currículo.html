@@ -3,63 +3,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Currículo — Fulano da Silva</title>
-  <style>
-    :root {
-      --blue: #1e88e5; /* altere o tom de azul se quiser */
-      --text: #222222;
-      --muted: #4b5563;
-      --divider: #e5e7eb;
-    }
-    * { box-sizing: border-box; }
-    html, body {
-      background: #f1f5f9;
-      margin: 0;
-    }
-    body {
-      font-family: Calibri, "Segoe UI", system-ui, Arial, sans-serif;
-      font-size: 12pt; /* pedido: Calibri tamanho 12 */
-      color: var(--text);
-      line-height: 1.45;
-    }
-    .page {
-      width: 210mm;             /* largura A4 */
-      min-height: 297mm;        /* altura A4 */
-      background: #ffffff;
-      margin: 20px auto;        /* centraliza na tela */
-      padding: 18mm;            /* respiro interno semelhante a margens de página */
-      box-shadow: 0 10px 30px rgba(0,0,0,.12);
-      border-radius: 10px;
-    }
-    .header { text-align: center; margin-bottom: 8mm; }
-    .name { font-size: 24pt; font-weight: 700; letter-spacing: .2px; }
-    .contact { margin-top: 3mm; color: var(--muted); font-size: 11pt; }.section { margin-top: 7mm; }
-.section-title {
-  display: inline-block;
-  background: var(--blue);
-  color: #fff;
-  padding: 6px 16px;
-  border-radius: 999px; /* formato pílula, azul em vez do verde */
-  font-weight: 700;
-  letter-spacing: .2px;
-}
-.section-content { margin-top: 4mm; }
-.list { margin: 0; padding-left: 5mm; }
-.list li { margin: 1.5mm 0; }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
-
-.job { margin-bottom: 4mm; }
-.job-title { font-weight: 700; }
-.job-meta { color: var(--muted); font-size: 11pt; }
-
-hr { border: none; border-top: 1px solid var(--divider); margin: 6mm 0; }
-
-@media print {
-  html, body { background: #fff; }
-  .page { box-shadow: none; margin: 0; border-radius: 0; }
-  a { color: black; text-decoration: none; }
-}
-
-  </style>
+ <link rel="stylesheet" href="curriculo.css">
 </head>
 <body>
   <main class="page">
