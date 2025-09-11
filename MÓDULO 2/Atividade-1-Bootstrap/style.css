@@ -43,10 +43,7 @@ transition: background 0.3s ease;
 background: #ececec;
 }
 .category-card img {
-  width: 100%;
-  height: auto;
-  max-height: 60px; /* garante que não fique gigante */
-  object-fit: contain;
+max-height: 50px;
 }
 .category-card p {
 font-size: 0.75rem;
