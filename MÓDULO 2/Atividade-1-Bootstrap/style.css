@@ -25,8 +25,9 @@ max-height: 40px;
 
 /* Hero banner */
 .hero img {
-width: 100%;
-border-radius: 8px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
 
@@ -42,7 +43,10 @@ transition: background 0.3s ease;
 background: #ececec;
 }
 .category-card img {
-max-height: 50px;
+  width: 100%;
+  height: auto;
+  max-height: 60px; /* garante que não fique gigante */
+  object-fit: contain;
 }
 .category-card p {
 font-size: 0.75rem;
@@ -58,11 +62,10 @@ transition: transform 0.2s ease;
 }
 .product-card:hover {
 transform: translateY(-3px);
-}
 .product-card img {
-width: 100%;
-height: 150px;
-object-fit: cover;
+  width: 100%;
+  height: auto; /* Remove altura fixa para não achatar */
+  object-fit: contain; /* Mantém proporção sem cortar */
 }
 .product-card .card-body {
 padding: 8px;
