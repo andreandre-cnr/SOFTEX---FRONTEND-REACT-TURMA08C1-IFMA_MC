@@ -1,0 +1,123 @@
+/* style.css - Loja Online Mobile */
+
+
+:root {
+--brand: #F26A00;
+--brand-dark: #cc5700;
+--bg-light: #f8f9fa;
+}
+
+
+body {
+background: #fff;
+font-family: system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial;
+}
+
+
+/* Navbar */
+.navbar {
+border-bottom: 1px solid #ddd;
+}
+.navbar-brand img {
+max-height: 40px;
+}
+
+
+/* Hero banner */
+.hero img {
+width: 100%;
+border-radius: 8px;
+}
+
+
+/* Categories */
+.category-card {
+text-align: center;
+border-radius: 8px;
+background: var(--bg-light);
+padding: 10px;
+transition: background 0.3s ease;
+}
+.category-card:hover {
+background: #ececec;
+}
+.category-card img {
+max-height: 50px;
+}
+.category-card p {
+font-size: 0.75rem;
+margin: 0;
+}
+
+
+/* Product Cards */
+.product-card {
+border-radius: 8px;
+overflow: hidden;
+transition: transform 0.2s ease;
+}
+.product-card:hover {
+transform: translateY(-3px);
+}
+.product-card img {
+width: 100%;
+height: 150px;
+object-fit: cover;
+}
+.product-card .card-body {
+padding: 8px;
+}
+.price {
+color: var(--brand);
+font-weight: 700;
+}
+.btn-buy {
+background: var(--brand);
+color: #fff;
+border: none;
+font-size: 0.85rem;
+transition: background 0.3s ease;
+}
+.btn-buy:hover {
+background: var(--brand-dark);
+}
+
+
+/* Floating Cart */
+.floating-cart {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: var(--brand);
+color: #fff;
+border-radius: 50%;
+width: 56px;
+height: 56px;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+z-index: 1000;
+transition: background 0.3s ease;
+}
+.floating-cart:hover {
+background: var(--brand-dark);
+}
+
+
+/* Footer */
+footer {
+background: var(--bg-light);
+text-align: center;
+padding: 15px 0;
+font-size: 0.9rem;
+margin-top: 30px;
+}
+footer a {
+color: var(--brand);
+margin: 0 8px;
+transition: color 0.3s ease;
+}
+footer a:hover {
+color: var(--brand-dark);
+}
