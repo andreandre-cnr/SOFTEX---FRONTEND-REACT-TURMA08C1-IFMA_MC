@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const inputNome = document.querySelector('#nome');
+    const inputUsuario = document.querySelector('#usuario'); // nome do usuário
+    const inputProduto = document.querySelector('#produto'); // nome do produto
     const inputQuant = document.querySelector('#quantidade');
     const inputValor = document.querySelector('#valor');
-    const tbody = document.querySelector('tbody');
+    const tbody = document.querySelector('#tbodyItemPedido');
     const btnCadastro = document.querySelector('#btnCadastro');
+    const totalCell = document.querySelector('.js-total');
 
-    if (!inputNome || !inputQuant || !inputValor || !btnCadastro || !tbody) {
+    if (!inputUsuario || !inputProduto || !inputQuant || !inputValor || !btnCadastro || !tbody || !totalCell) {
         console.error('Algum elemento não foi encontrado no DOM.');
         return;
     }
@@ -13,7 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCadastro.addEventListener('click', function(event) {
         event.preventDefault();
 
-        let campos = [inputNome.value, inputQuant.value, inputValor.value];
+        // Agora só valida se o usuário já digitou o nome dele antes
+        if (!inputUsuario.value.trim()) {
+            alert('Digite o nome do usuário primeiro!');
+            inputUsuario.focus();
+            return;
+        }
+
+        let campos = [inputProduto.value, inputQuant.value, inputValor.value];
         console.log('Valores digitados:', campos);
 
         let linha = document.createElement('tr');
@@ -36,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Recalcula o total geral
         calculaTotal(document.querySelectorAll('.subtotal-js'));
 
-        // Limpa os campos e foca no primeiro
-        inputNome.value = '';
+        // Limpa apenas os campos do produto
+        inputProduto.value = '';
         inputQuant.value = '';
         inputValor.value = '';
-        inputNome.focus();
+        inputProduto.focus();
 
-        alert('Linha adicionada com sucesso!');
+        alert('Produto adicionado com sucesso!');
     });
 
     function calculaTotal(vetSubtotal){
@@ -50,6 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         vetSubtotal.forEach(celula => {
             total += parseFloat(celula.textContent);
         });
-        console.log('Total: ' + total.toFixed(2));
+        totalCell.textContent = total.toFixed(2);
     }
 });
