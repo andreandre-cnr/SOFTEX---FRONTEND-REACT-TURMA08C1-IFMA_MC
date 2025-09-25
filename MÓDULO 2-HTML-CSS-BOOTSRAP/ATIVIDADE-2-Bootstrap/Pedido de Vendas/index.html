@@ -1,39 +1,204 @@
-<div class="form-group">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Produtos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form, table {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      box-sizing: border-box;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #218838;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #f1f1f1;
+    }
+
+    tfoot td {
+      font-weight: bold;
+      background: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cadastro de Produtos</h1>
+
+  <!-- Nome do usuário -->
+  <form id="formUsuario">
     <label for="usuario">Nome do usuário:</label>
-    <input type="text" id="usuario" class="form-control" placeholder="Digite seu nome">
-  </div>
-  
-  <hr>
-  
-  <!-- Cadastro de produtos -->
-  <div class="form-group">
+    <input type="text" id="usuario" placeholder="Digite seu nome aqui" />
+  </form>
+
+  <!-- Formulário de cadastro de produto -->
+  <form id="formProduto">
     <label for="produto">Nome do produto:</label>
-    <input type="text" id="produto" class="form-control" placeholder="Digite o nome do produto">
-  
+    <input type="text" id="produto" placeholder="Digite o nome do produto" />
+
     <label for="quantidade">Quantidade:</label>
-    <input type="number" id="quantidade" class="form-control" placeholder="Digite a quantidade">
-  
-    <label for="valor">Valor unitário:</label>
-    <input type="number" id="valor" class="form-control" step="0.01" placeholder="Digite o valor">
-  
-    <button id="btnCadastro" class="btn btn-primary">Cadastrar</button>
-  </div>
-  
-  <!-- Tabela -->
-  <table class="table">
+    <input type="number" id="quantidade" placeholder="Digite a quantidade" />
+
+    <label for="valor">Valor unitário (R$):</label>
+    <input type="number" id="valor" placeholder="Digite o valor unitário" step="0.01" />
+
+    <button id="btnCadastro">Cadastrar Produto</button>
+  </form>
+
+  <!-- Tabela de produtos -->
+  <table>
     <thead>
       <tr>
         <th>Produto</th>
         <th>Quantidade</th>
-        <th>Valor</th>
-        <th>Subtotal</th>
+        <th>Valor Unitário (R$)</th>
+        <th>Subtotal (R$)</th>
       </tr>
     </thead>
     <tbody id="tbodyItemPedido"></tbody>
     <tfoot>
       <tr>
-        <td colspan="3" class="text-right">Total</td>
+        <td colspan="3" class="text-right">Total Geral</td>
         <td class="text-center js-total">0.00</td>
       </tr>
     </tfoot>
   </table>
+
+  <!-- Script JavaScript -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const inputUsuario = document.querySelector('#usuario');   // Nome do usuário
+      const inputProduto = document.querySelector('#produto');   // Nome do produto
+      const inputQuant = document.querySelector('#quantidade');  // Quantidade
+      const inputValor = document.querySelector('#valor');       // Valor unitário
+      const tbody = document.querySelector('#tbodyItemPedido');  // Corpo da tabela
+      const btnCadastro = document.querySelector('#btnCadastro');// Botão de cadastro
+      const totalCell = document.querySelector('.js-total');     // Total no rodapé
+
+      if (!inputUsuario || !inputProduto || !inputQuant || !inputValor || !btnCadastro || !tbody || !totalCell) {
+          console.error('Algum elemento não foi encontrado no DOM.');
+          return;
+      }
+
+      btnCadastro.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          // ⚠️ Antes de cadastrar produto, exige que o nome do usuário já tenha sido digitado
+          if (!inputUsuario.value.trim()) {
+              alert('Digite o nome do usuário primeiro!');
+              inputUsuario.focus();
+              return;
+          }
+
+          // Valida campos do produto
+          if (!inputProduto.value.trim() || !inputQuant.value.trim() || !inputValor.value.trim()) {
+              alert('Preencha todos os campos do produto!');
+              return;
+          }
+
+          // Cria linha na tabela
+          let linha = document.createElement('tr');
+
+          // Colunas do produto
+          let celulaProduto = document.createElement('td');
+          celulaProduto.textContent = inputProduto.value;
+          linha.appendChild(celulaProduto);
+
+          let celulaQuant = document.createElement('td');
+          celulaQuant.textContent = inputQuant.value;
+          linha.appendChild(celulaQuant);
+
+          let celulaValor = document.createElement('td');
+          celulaValor.textContent = parseFloat(inputValor.value).toFixed(2);
+          linha.appendChild(celulaValor);
+
+          // Subtotal
+          let celulaSubTotal = document.createElement('td');
+          let subtotal = parseFloat(inputQuant.value) * parseFloat(inputValor.value);
+          celulaSubTotal.textContent = subtotal.toFixed(2);
+          celulaSubTotal.classList.add('text-center', 'subtotal-js');
+          linha.appendChild(celulaSubTotal);
+
+          // Adiciona a linha na tabela
+          tbody.appendChild(linha);
+
+          // Recalcula o total geral
+          calculaTotal(document.querySelectorAll('.subtotal-js'));
+
+          // Limpa apenas os campos do produto
+          inputProduto.value = '';
+          inputQuant.value = '';
+          inputValor.value = '';
+          inputProduto.focus();
+      });
+
+      // Função para calcular o total geral
+      function calculaTotal(vetSubtotal){
+          let total = 0;
+          vetSubtotal.forEach(celula => {
+              total += parseFloat(celula.textContent);
+          });
+          totalCell.textContent = total.toFixed(2);
+      }
+    });
+  </script>
+
+</body>
+</html>
