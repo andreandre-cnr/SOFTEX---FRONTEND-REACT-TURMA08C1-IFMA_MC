@@ -1,67 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const inputNome = document.querySelector('#nome');           // Campo Nome
-    const inputQuant = document.querySelector('#quantidade');    // Campo Quantidade
-    const inputValor = document.querySelector('#valor');         // Campo Valor
-    const tbody = document.querySelector('tbody');               // Seleciona o <tbody> da tabela
-    const btnCadastro = document.querySelector('#btnCadastro');  // Botão de cadastro
+    const inputNome = document.querySelector('#nome');
+    const inputQuant = document.querySelector('#quantidade');
+    const inputValor = document.querySelector('#valor');
+    const tbody = document.querySelector('tbody');
+    const btnCadastro = document.querySelector('#btnCadastro');
 
-    // Verificação de elementos
     if (!inputNome || !inputQuant || !inputValor || !btnCadastro || !tbody) {
-      console.error('Algum elemento não foi encontrado no DOM.');
-      return;
+        console.error('Algum elemento não foi encontrado no DOM.');
+        return;
     }
 
-    // UM ÚNICO addEventListener para o botão
     btnCadastro.addEventListener('click', function(event) {
         event.preventDefault();
 
-        // Coleta os valores
         let campos = [inputNome.value, inputQuant.value, inputValor.value];
-
-        // Log no console (só para conferência)
         console.log('Valores digitados:', campos);
 
-        // Cria a linha da tabela
         let linha = document.createElement('tr');
 
-        // Para cada valor do array, cria uma célula <td> e adiciona na linha
         campos.forEach(function(campo) {
             let celula = document.createElement('td');
             celula.textContent = campo;
-            linha.appendChild(celula); // Adiciona a célula à linha
-            
+            linha.appendChild(celula);
         });
 
-        let celulaSubTotal.textcontent = document.createElement('td');
-        let celulaSubTotal.textcontent = subtotal
-        let celulaSubTotal.classlist = 'text-center subtotal-js'
-        
-        
-        // Adiciona a linha ao tbody da tabela
+        // Calcula o subtotal e adiciona a célula extra
+        let celulaSubTotal = document.createElement('td');
+        let subtotal = parseFloat(inputQuant.value) * parseFloat(inputValor.value);
+        celulaSubTotal.textContent = subtotal.toFixed(2);
+        celulaSubTotal.classList.add('text-center', 'subtotal-js');
+        linha.appendChild(celulaSubTotal);
+
         tbody.appendChild(linha);
-        
 
-        // Limpa os campos do formulário (opcional)
-        calculaTotal(document.querySelectorAll('.subTotal-js'))
-        function limpaformulario() {
-        }
-        function calculaTotal(vetSubtotal){
-            let total = 0
-            total = total + parseFloat(subtotal.textContent)
-            vetSubtotal.forEach(funcion(subtotal))
-            console.log(subtotal.textContent)
-            console.log('total'+ total)
-        }
-       
+        // Recalcula o total geral
+        calculaTotal(document.querySelectorAll('.subtotal-js'));
 
+        // Limpa os campos e foca no primeiro
         inputNome.value = '';
         inputQuant.value = '';
         inputValor.value = '';
-        inputNome.focus()
+        inputNome.focus();
 
-
-        // Exibe uma confirmação
         alert('Linha adicionada com sucesso!');
-
     });
+
+    function calculaTotal(vetSubtotal){
+        let total = 0;
+        vetSubtotal.forEach(celula => {
+            total += parseFloat(celula.textContent);
+        });
+        console.log('Total: ' + total.toFixed(2));
+    }
 });
