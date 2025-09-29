@@ -1,0 +1,23 @@
+body { 
+  font-family: Calibri, sans-serif; 
+  margin: 20px; 
+}
+input, button { 
+  padding: 5px; 
+  margin: 5px 0; 
+}
+table {
+  border-collapse: collapse;
+  margin-top: 15px;
+  width: 100%;
+  max-width: 400px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+.erro { 
+  color: red; 
+  font-weight: bold; 
+}

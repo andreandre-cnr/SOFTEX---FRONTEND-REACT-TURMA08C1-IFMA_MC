@@ -1,0 +1,17 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+#resultado {
+  font-size: 1.1rem;
+}
+
+.correct {
+  color: green;
+  font-weight: bold;
+}
+
+.incorrect {
+  color: red;
+  font-weight: bold;
+}

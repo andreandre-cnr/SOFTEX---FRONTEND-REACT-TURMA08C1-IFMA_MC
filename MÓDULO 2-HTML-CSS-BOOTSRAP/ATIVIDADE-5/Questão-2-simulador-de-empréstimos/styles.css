@@ -1,0 +1,45 @@
+body {
+  font-family: Calibri, sans-serif;
+  margin: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+input, button {
+  padding: 6px;
+}
+
+button {
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+#resultado p {
+  margin: 4px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 6px;
+}

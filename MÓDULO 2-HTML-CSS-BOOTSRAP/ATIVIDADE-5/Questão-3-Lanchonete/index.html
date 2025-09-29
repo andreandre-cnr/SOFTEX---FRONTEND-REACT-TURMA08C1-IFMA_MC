@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lanchonete do IFMA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Lanchonete do IFMA</h1>
+
+    <form id="formLanchonete">
+      <label for="nome">Nome do Cliente:</label>
+      <input type="text" id="nome" required>
+
+      <fieldset>
+        <legend>Bebidas:</legend>
+        <label><input type="radio" name="bebida" value="Suco" required> Suco</label>
+        <label><input type="radio" name="bebida" value="Refrigerante"> Refrigerante</label>
+        <label><input type="radio" name="bebida" value="Água"> Água</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Doces e Salgados:</legend>
+        <label><input type="checkbox" name="comida" value="Bolo"> Bolo</label>
+        <label><input type="checkbox" name="comida" value="Pastel"> Pastel</label>
+        <label><input type="checkbox" name="comida" value="Torta"> Torta</label>
+      </fieldset>
+
+      <div class="buttons">
+        <button type="button" id="btnCalcular">Calcular</button>
+        <button type="reset" id="btnLimpar">Limpar</button>
+      </div>
+    </form>
+
+    <!-- Aqui vai a tabela de resultados -->
+    <section id="resultado">
+      <h3>Resumo do Pedido</h3>
+      <p><strong>Cliente:</strong> <span id="nomeCliente"></span></p>
+      <table id="tabelaResultado">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Preço (R$)</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td id="totalPedido"><strong>0,00</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
