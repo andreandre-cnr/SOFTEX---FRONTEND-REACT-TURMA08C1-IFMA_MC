@@ -72,4 +72,18 @@ quizForm.addEventListener("submit", function (e) {
   if (pontuacao === quiz.length) {
     mensagemFinal = "🎉 Excelente! Você acertou todas!";
   } else if (pontuacao >= quiz.length / 2) {
-    mensagem
+    mensagemFinal = "👍 Muito bem! Você foi razoavelmente bem.";
+  } else {
+    mensagemFinal = "😢 Continue estudando, você pode melhorar.";
+  }
+
+  resultadoDiv.innerHTML = `
+    <h4>Resultado</h4>
+    ${feedback}
+    <p><strong>Pontuação final: ${pontuacao} / ${quiz.length}</strong></p>
+    <p>${mensagemFinal}</p>
+  `;
+  resultadoDiv.classList.remove("d-none");
+});
+
+carregarQuiz();

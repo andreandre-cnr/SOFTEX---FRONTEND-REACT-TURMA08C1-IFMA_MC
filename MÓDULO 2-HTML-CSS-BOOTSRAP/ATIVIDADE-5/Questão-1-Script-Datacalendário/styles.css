@@ -1,32 +1,23 @@
-/* ======= Estilo padrão da tabela (desktop) ======= */
+body { 
+  font-family: Calibri, sans-serif; 
+  margin: 20px; 
+}
+input, button { 
+  padding: 5px; 
+  margin: 5px 0; 
+}
 table {
-  width: 100%;
-  max-width: 900px;
   border-collapse: collapse;
-  margin: 0 auto;
-  background: white;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  margin-top: 15px;
+  width: 100%;
+  max-width: 400px;
 }
-
-thead th {
-  background-color: #4CAF50;
-  color: white;
-  text-align: left;
-  padding: 12px;
-}
-
 th, td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: left;
-  vertical-align: middle;
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
 }
-
-/* ======= Transformação em "cards" no mobile ======= */
-@media (max-width: 700px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
-
-  thead {
-    display: none; /* esconde cabeçalho*
+.erro { 
+  color: red; 
+  font-weight: bold; 
+}
