@@ -1,9 +1,74 @@
-body {
-  font-family: Arial, sans-serif;
+/* ===== Reset básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  padding: 20px;
+}
+
+h1, h4 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* ===== Formulário e Quiz ===== */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+h5 {
+  margin-bottom: 10px;
+  color: #4CAF50;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+button {
+  display: block;
+  margin: 15px auto 0 auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* ===== Resultado ===== */
 #resultado {
-  font-size: 1.1rem;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
 }
 
 .correct {
@@ -14,4 +79,8 @@ body {
 .incorrect {
   color: red;
   font-weight: bold;
+}
+
+.d-none {
+  display: none;
 }
