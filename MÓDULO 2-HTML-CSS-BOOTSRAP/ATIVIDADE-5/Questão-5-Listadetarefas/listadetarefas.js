@@ -2,7 +2,6 @@ const btnAdicionar = document.getElementById("btnAdicionar");
 const inputTarefa = document.getElementById("novaTarefa");
 const listaTarefas = document.getElementById("listaTarefas");
 
-// Função para adicionar uma nova tarefa
 function adicionarTarefa() {
   const texto = inputTarefa.value.trim();
   if (texto === "") {
@@ -10,22 +9,20 @@ function adicionarTarefa() {
     return;
   }
 
-  // Criar elemento li
   const li = document.createElement("li");
+  li.className = "list-group-item d-flex justify-content-between align-items-center";
   li.textContent = texto;
 
-  // Botão de remover
   const btnRemover = document.createElement("button");
   btnRemover.textContent = "Remover";
-  btnRemover.className = "remover";
+  btnRemover.className = "btn btn-danger btn-sm remover";
 
   btnRemover.addEventListener("click", () => {
     listaTarefas.removeChild(li);
   });
 
-  // Marcar como concluída ao clicar na tarefa
   li.addEventListener("click", (e) => {
-    if(e.target !== btnRemover) { // não marcar se clicou no botão remover
+    if (e.target !== btnRemover) {
       li.classList.toggle("completed");
     }
   });
@@ -37,12 +34,10 @@ function adicionarTarefa() {
   inputTarefa.focus();
 }
 
-// Evento do botão
 btnAdicionar.addEventListener("click", adicionarTarefa);
 
-// Permitir adicionar pressionando Enter
-inputTarefa.addEventListener("keypress", function(e){
-  if(e.key === "Enter") {
+inputTarefa.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
     e.preventDefault();
     adicionarTarefa();
   }
