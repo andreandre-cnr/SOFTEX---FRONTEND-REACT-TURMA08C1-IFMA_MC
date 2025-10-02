@@ -19,6 +19,7 @@ const quiz = [
 const quizContainer = document.getElementById("quizContainer");
 const quizForm = document.getElementById("quizForm");
 const resultadoDiv = document.getElementById("resultado");
+const btnFinalizar = document.getElementById("btnFinalizar");
 
 function carregarQuiz() {
   quiz.forEach((q, index) => {
@@ -47,43 +48,52 @@ function carregarQuiz() {
   });
 }
 
+// Feedback e pontuação
 quizForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  let pontuacao = 0;
-  let feedback = "";
+  btnFinalizar.disabled = true; // desabilita botão temporariamente
+  btnFinalizar.innerText = "Calculando...";
 
-  quiz.forEach((q, index) => {
-    const resposta = document.querySelector(`input[name="pergunta${index}"]:checked`);
-    if (resposta) {
-      const respostaIndex = parseInt(resposta.value);
-      if (respostaIndex === q.correta) {
-        pontuacao++;
-        feedback += `<p>${index + 1}. <span class="correct">Correto!</span></p>`;
+  setTimeout(() => {
+    let pontuacao = 0;
+    let feedback = "";
+
+    quiz.forEach((q, index) => {
+      const resposta = document.querySelector(`input[name="pergunta${index}"]:checked`);
+      if (resposta) {
+        const respostaIndex = parseInt(resposta.value);
+        if (respostaIndex === q.correta) {
+          pontuacao++;
+          feedback += `<p>${index + 1}. <span class="correct">Correto!</span></p>`;
+        } else {
+          feedback += `<p>${index + 1}. <span class="incorrect">Errado!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
+        }
       } else {
-        feedback += `<p>${index + 1}. <span class="incorrect">Errado!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
+        feedback += `<p>${index + 1}. <span class="incorrect">Sem resposta!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
       }
+    });
+
+    let mensagemFinal = "";
+    if (pontuacao === quiz.length) {
+      mensagemFinal = "🎉 Excelente! Você acertou todas!";
+    } else if (pontuacao >= quiz.length / 2) {
+      mensagemFinal = "👍 Muito bem! Você foi razoavelmente bem.";
     } else {
-      feedback += `<p>${index + 1}. <span class="incorrect">Sem resposta!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
+      mensagemFinal = "😢 Continue estudando, você pode melhorar.";
     }
-  });
 
-  let mensagemFinal = "";
-  if (pontuacao === quiz.length) {
-    mensagemFinal = "🎉 Excelente! Você acertou todas!";
-  } else if (pontuacao >= quiz.length / 2) {
-    mensagemFinal = "👍 Muito bem! Você foi razoavelmente bem.";
-  } else {
-    mensagemFinal = "😢 Continue estudando, você pode melhorar.";
-  }
+    resultadoDiv.innerHTML = `
+      <h4>Resultado</h4>
+      ${feedback}
+      <p><strong>Pontuação final: ${pontuacao} / ${quiz.length}</strong></p>
+      <p>${mensagemFinal}</p>
+    `;
+    resultadoDiv.classList.remove("d-none");
 
-  resultadoDiv.innerHTML = `
-    <h4>Resultado</h4>
-    ${feedback}
-    <p><strong>Pontuação final: ${pontuacao} / ${quiz.length}</strong></p>
-    <p>${mensagemFinal}</p>
-  `;
-  resultadoDiv.classList.remove("d-none");
+    btnFinalizar.disabled = false;
+    btnFinalizar.innerText = "Finalizar Quiz";
+  }, 400); // pequena animação de clique
 });
 
 carregarQuiz();
