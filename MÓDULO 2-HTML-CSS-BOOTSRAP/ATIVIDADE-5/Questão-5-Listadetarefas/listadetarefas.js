@@ -1,56 +1,49 @@
-// Seletores
-const tarefaInput = document.getElementById("tarefaInput");
-const addBtn = document.getElementById("addBtn");
+const btnAdicionar = document.getElementById("btnAdicionar");
+const inputTarefa = document.getElementById("novaTarefa");
 const listaTarefas = document.getElementById("listaTarefas");
 
-// Função para adicionar tarefa
+// Função para adicionar uma nova tarefa
 function adicionarTarefa() {
-  const texto = tarefaInput.value.trim();
-
+  const texto = inputTarefa.value.trim();
   if (texto === "") {
-    alert("⚠️ Digite uma tarefa antes de adicionar!");
+    alert("Digite uma tarefa antes de adicionar!");
     return;
   }
 
-  // Criar item da lista
+  // Criar elemento li
   const li = document.createElement("li");
-  li.className = "list-group-item";
+  li.textContent = texto;
 
-  const span = document.createElement("span");
-  span.textContent = texto;
+  // Botão de remover
+  const btnRemover = document.createElement("button");
+  btnRemover.textContent = "Remover";
+  btnRemover.className = "remover";
 
-  // Botões de ação
-  const botoesDiv = document.createElement("div");
-
-  const concluirBtn = document.createElement("button");
-  concluirBtn.textContent = "✔";
-  concluirBtn.className = "btn btn-success btn-sm me-2";
-  concluirBtn.addEventListener("click", () => {
-    span.classList.toggle("completed");
+  btnRemover.addEventListener("click", () => {
+    listaTarefas.removeChild(li);
   });
 
-  const removerBtn = document.createElement("button");
-  removerBtn.textContent = "🗑";
-  removerBtn.className = "btn btn-danger btn-sm";
-  removerBtn.addEventListener("click", () => {
-    li.remove();
+  // Marcar como concluída ao clicar na tarefa
+  li.addEventListener("click", (e) => {
+    if(e.target !== btnRemover) { // não marcar se clicou no botão remover
+      li.classList.toggle("completed");
+    }
   });
 
-  botoesDiv.appendChild(concluirBtn);
-  botoesDiv.appendChild(removerBtn);
-
-  li.appendChild(span);
-  li.appendChild(botoesDiv);
-
+  li.appendChild(btnRemover);
   listaTarefas.appendChild(li);
 
-  // Limpar input
-  tarefaInput.value = "";
-  tarefaInput.focus();
+  inputTarefa.value = "";
+  inputTarefa.focus();
 }
 
-// Eventos
-addBtn.addEventListener("click", adicionarTarefa);
-tarefaInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") adicionarTarefa();
+// Evento do botão
+btnAdicionar.addEventListener("click", adicionarTarefa);
+
+// Permitir adicionar pressionando Enter
+inputTarefa.addEventListener("keypress", function(e){
+  if(e.key === "Enter") {
+    e.preventDefault();
+    adicionarTarefa();
+  }
 });
