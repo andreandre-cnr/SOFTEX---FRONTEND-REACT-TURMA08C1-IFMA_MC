@@ -1,55 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#formEmprestimo');
-  const tbody = document.querySelector('#tabelaAmortizacao tbody');
   const totalSpan = document.querySelector('#total');
   const parcelaSpan = document.querySelector('#parcela');
+  const tbody = document.querySelector('#tabelaAmortizacao tbody');
 
   form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    event.preventDefault(); // impede reload da página
 
-    // Coleta e converte valores
+    // Pega valores do formulário
     const valor = parseFloat(document.querySelector('#valor').value);
-    const parcelas = parseInt(document.querySelector('#parcelas').value, 10);
-    const juros = parseFloat(document.querySelector('#juros').value) / 100;
+    const parcelas = parseInt(document.querySelector('#parcelas').value);
+    const juros = parseFloat(document.querySelector('#juros').value) / 100; // converte % p/ decimal
 
-    if (valor <= 0 || parcelas < 1 || parcelas > 36 || juros < 0) {
-      alert('Verifique os valores informados!');
+    if (isNaN(valor) || isNaN(parcelas) || isNaN(juros)) {
+      alert("Preencha todos os campos corretamente.");
       return;
     }
 
-    // Fórmula de cálculo da parcela (juros compostos)
-    const parcela = valor * (juros * Math.pow(1 + juros, parcelas)) / (Math.pow(1 + juros, parcelas) - 1);
+    // Fórmula de prestação fixa (Price)
+    const parcela = (valor * juros) / (1 - Math.pow(1 + juros, -parcelas));
     const total = parcela * parcelas;
 
-    // Mostra valores finais
-    totalSpan.textContent = `R$ ${total.toFixed(2)}`;
-    parcelaSpan.textContent = `R$ ${parcela.toFixed(2)}`;
+    // Mostra resultados principais
+    totalSpan.textContent = total.toFixed(2);
+    parcelaSpan.textContent = parcela.toFixed(2);
 
-    // Limpa tabela anterior
+    // Limpa a tabela antes de recriar
     tbody.innerHTML = '';
 
-    // Gera tabela de amortização
+    // Gera a tabela de amortização
     let saldo = valor;
     for (let i = 1; i <= parcelas; i++) {
-      const jurosDoMes = saldo * juros;
-      const amortizacao = parcela - jurosDoMes;
+      const jurosParcela = saldo * juros;
+      const amortizacao = parcela - jurosParcela;
       saldo -= amortizacao;
 
-      const linha = document.createElement('tr');
-
-      const celParcela = document.createElement('td');
-      celParcela.textContent = i;
-      linha.appendChild(celParcela);
-
-      const celValor = document.createElement('td');
-      celValor.textContent = `R$ ${parcela.toFixed(2)}`;
-      linha.appendChild(celValor);
-
-      const celSaldo = document.createElement('td');
-      celSaldo.textContent = `R$ ${saldo > 0 ? saldo.toFixed(2) : '0.00'}`;
-      linha.appendChild(celSaldo);
-
-      tbody.appendChild(linha);
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${i}</td>
+        <td>${parcela.toFixed(2)}</td>
+        <td>${saldo > 0 ? saldo.toFixed(2) : '0.00'}</td>
+      `;
+      tbody.appendChild(tr);
     }
   });
 });
