@@ -3,11 +3,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #f9f9f9;
+  background-color: #f2f4f8;
   color: #333;
   padding: 20px;
 }
@@ -25,50 +25,64 @@ h1, h4 {
 /* ===== Formulário e Quiz ===== */
 form {
   background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  padding: 25px 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
   margin-bottom: 20px;
 }
 
 h5 {
-  margin-bottom: 10px;
-  color: #4CAF50;
+  margin-bottom: 12px;
+  color: #1f7a8c;
+  font-size: 1.1rem;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+label:hover {
+  background-color: #f0f8ff;
+  transform: scale(1.02);
 }
 
 input[type="radio"] {
-  margin-right: 8px;
+  margin-right: 10px;
 }
 
-button {
+/* ===== Botão Finalizar ===== */
+button#btnFinalizar {
   display: block;
-  margin: 15px auto 0 auto;
-  padding: 10px 20px;
+  margin: 20px auto 0 auto;
+  padding: 12px 25px;
   border: none;
-  border-radius: 5px;
-  background-color: #4CAF50;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #4CAF50, #2e7d32);
   color: white;
   font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
 
-button:hover {
-  background-color: #45a049;
+button#btnFinalizar:hover {
+  background: linear-gradient(90deg, #66bb6a, #388e3c);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0,0,0,0.2);
 }
 
 /* ===== Resultado ===== */
 #resultado {
   background: white;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
 }
 
 .correct {
@@ -83,4 +97,21 @@ button:hover {
 
 .d-none {
   display: none;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 600px) {
+  form {
+    padding: 20px 15px;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  button#btnFinalizar {
+    width: 90%;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
 }
