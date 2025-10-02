@@ -19,8 +19,8 @@ const quiz = [
 const quizContainer = document.getElementById("quizContainer");
 const quizForm = document.getElementById("quizForm");
 const resultadoDiv = document.getElementById("resultado");
-const btnFinalizar = document.getElementById("btnFinalizar");
 
+// Renderizar quiz
 function carregarQuiz() {
   quiz.forEach((q, index) => {
     const card = document.createElement("div");
@@ -41,6 +41,18 @@ function carregarQuiz() {
 
       label.appendChild(input);
       label.appendChild(document.createTextNode(alt));
+
+      // Feedback instantâneo
+      input.addEventListener("change", () => {
+        const labels = card.querySelectorAll(".quiz-label");
+        labels.forEach(l => l.classList.remove("correct","incorrect"));
+        if(parseInt(input.value) === q.correta){
+          label.classList.add("correct");
+        } else {
+          label.classList.add("incorrect");
+        }
+      });
+
       card.appendChild(label);
     });
 
@@ -48,52 +60,48 @@ function carregarQuiz() {
   });
 }
 
-// Feedback e pontuação
+// Finalizar quiz
 quizForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  btnFinalizar.disabled = true; // desabilita botão temporariamente
-  btnFinalizar.innerText = "Calculando...";
+  let pontuacao = 0;
+  let feedback = "";
 
-  setTimeout(() => {
-    let pontuacao = 0;
-    let feedback = "";
-
-    quiz.forEach((q, index) => {
-      const resposta = document.querySelector(`input[name="pergunta${index}"]:checked`);
-      if (resposta) {
-        const respostaIndex = parseInt(resposta.value);
-        if (respostaIndex === q.correta) {
-          pontuacao++;
-          feedback += `<p>${index + 1}. <span class="correct">Correto!</span></p>`;
-        } else {
-          feedback += `<p>${index + 1}. <span class="incorrect">Errado!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
-        }
-      } else {
-        feedback += `<p>${index + 1}. <span class="incorrect">Sem resposta!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
-      }
-    });
-
-    let mensagemFinal = "";
-    if (pontuacao === quiz.length) {
-      mensagemFinal = "🎉 Excelente! Você acertou todas!";
-    } else if (pontuacao >= quiz.length / 2) {
-      mensagemFinal = "👍 Muito bem! Você foi razoavelmente bem.";
-    } else {
-      mensagemFinal = "😢 Continue estudando, você pode melhorar.";
+  quiz.forEach((q, index) => {
+    const resposta = document.querySelector(`input[name="pergunta${index}"]:checked`);
+    if(resposta){
+      const respostaIndex = parseInt(resposta.value);
+      if(respostaIndex === q.correta) pontuacao++;
     }
+  });
 
-    resultadoDiv.innerHTML = `
-      <h4>Resultado</h4>
-      ${feedback}
-      <p><strong>Pontuação final: ${pontuacao} / ${quiz.length}</strong></p>
-      <p>${mensagemFinal}</p>
-    `;
-    resultadoDiv.classList.remove("d-none");
+  quiz.forEach((q,index)=>{
+    const resposta = document.querySelector(`input[name="pergunta${index}"]:checked`);
+    if(resposta){
+      const resp = parseInt(resposta.value);
+      if(resp === q.correta){
+        feedback += `<p>${index+1}. <span class="correct">Correto!</span></p>`;
+      } else {
+        feedback += `<p>${index+1}. <span class="incorrect">Errado!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
+      }
+    } else {
+      feedback += `<p>${index+1}. <span class="incorrect">Sem resposta!</span> Resposta certa: <b>${q.alternativas[q.correta]}</b></p>`;
+    }
+  });
 
-    btnFinalizar.disabled = false;
-    btnFinalizar.innerText = "Finalizar Quiz";
-  }, 400); // pequena animação de clique
+  let mensagemFinal = "";
+  if(pontuacao === quiz.length) mensagemFinal = "🎉 Excelente! Você acertou todas!";
+  else if(pontuacao >= quiz.length/2) mensagemFinal = "👍 Muito bem! Você foi razoavelmente bem.";
+  else mensagemFinal = "😢 Continue estudando, você pode melhorar.";
+
+  resultadoDiv.innerHTML = `
+    <h4>Resultado</h4>
+    ${feedback}
+    <p><strong>Pontuação final: ${pontuacao} / ${quiz.length}</strong></p>
+    <p>${mensagemFinal}</p>
+  `;
+  resultadoDiv.classList.remove("d-none");
 });
 
+// Inicializar quiz
 carregarQuiz();
