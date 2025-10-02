@@ -31,23 +31,31 @@ form {
   margin-bottom: 20px;
 }
 
+.quiz-card {
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
 h5 {
   margin-bottom: 12px;
   color: #1f7a8c;
   font-size: 1.1rem;
 }
 
-label {
+.quiz-label {
   display: block;
   margin-bottom: 10px;
   cursor: pointer;
-  padding: 6px 10px;
+  padding: 8px 12px;
   border-radius: 6px;
   transition: background 0.3s, transform 0.2s;
 }
 
-label:hover {
-  background-color: #f0f8ff;
+.quiz-label:hover {
+  background-color: #e0f0ff;
   transform: scale(1.02);
 }
 
@@ -82,7 +90,7 @@ button#btnFinalizar:hover {
   background: white;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .correct {

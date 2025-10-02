@@ -1,4 +1,3 @@
-// Array de perguntas e respostas
 const quiz = [
   {
     pergunta: "Qual linguagem é usada para estruturar páginas web?",
@@ -17,41 +16,37 @@ const quiz = [
   }
 ];
 
-// Seletores
 const quizContainer = document.getElementById("quizContainer");
 const quizForm = document.getElementById("quizForm");
 const resultadoDiv = document.getElementById("resultado");
 
-// Renderiza perguntas dinamicamente
 function carregarQuiz() {
   quiz.forEach((q, index) => {
-    const div = document.createElement("div");
-    div.classList.add("mb-4");
+    const card = document.createElement("div");
+    card.className = "quiz-card";
 
     const pergunta = document.createElement("h5");
     pergunta.textContent = `${index + 1}. ${q.pergunta}`;
-    div.appendChild(pergunta);
+    card.appendChild(pergunta);
 
     q.alternativas.forEach((alt, i) => {
       const label = document.createElement("label");
-      label.classList.add("d-block");
+      label.className = "quiz-label";
 
       const input = document.createElement("input");
       input.type = "radio";
       input.name = `pergunta${index}`;
       input.value = i;
-      input.classList.add("me-2");
 
       label.appendChild(input);
       label.appendChild(document.createTextNode(alt));
-      div.appendChild(label);
+      card.appendChild(label);
     });
 
-    quizContainer.appendChild(div);
+    quizContainer.appendChild(card);
   });
 }
 
-// Corrige o quiz
 quizForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -73,24 +68,8 @@ quizForm.addEventListener("submit", function (e) {
     }
   });
 
-  // Mensagem personalizada
   let mensagemFinal = "";
   if (pontuacao === quiz.length) {
     mensagemFinal = "🎉 Excelente! Você acertou todas!";
   } else if (pontuacao >= quiz.length / 2) {
-    mensagemFinal = "👍 Muito bem! Você foi razoavelmente bem.";
-  } else {
-    mensagemFinal = "😢 Continue estudando, você pode melhorar.";
-  }
-
-  resultadoDiv.innerHTML = `
-    <h4>Resultado</h4>
-    ${feedback}
-    <p><strong>Pontuação final: ${pontuacao} / ${quiz.length}</strong></p>
-    <p>${mensagemFinal}</p>
-  `;
-  resultadoDiv.classList.remove("d-none");
-});
-
-// Inicializa
-carregarQuiz();
+    mensagem
