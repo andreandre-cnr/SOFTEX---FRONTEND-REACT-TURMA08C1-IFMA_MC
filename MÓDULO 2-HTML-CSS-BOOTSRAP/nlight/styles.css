@@ -1,0 +1,134 @@
+/* ================================
+   ESTILOS GERAIS - NLIGHT VIAGENS
+   ================================ */
+
+   body {
+    font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+    background-color: #fff7ef;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ====== CORES ====== */
+  .bg-orange {
+    background-color: #f7931e; /* Laranja oficial NLIGHT */
+  }
+  
+  /* ====== LOGO ====== */
+  .logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+  
+  /* ====== SEÇÃO HERO ====== */
+  section.text-center {
+    background: linear-gradient(to bottom, #f7931e 0%, #faaa3c 100%);
+    padding: 60px 20px;
+    border-radius: 0 0 40px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  section.text-center h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  section.text-center p {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 0;
+  }
+  
+  /* ====== CARDS DE SERVIÇOS ====== */
+  .card {
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card h2 {
+    color: #f7931e;
+  }
+  
+  .price {
+    font-weight: bold;
+    color: #333;
+    float: right;
+  }
+  
+  /* ====== FORMULÁRIO PARCEIROS ====== */
+  form input,
+  form button {
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+  
+  form input {
+    border: 1px solid #ccc;
+  }
+  
+  form input:focus {
+    border-color: #f7931e;
+    box-shadow: 0 0 5px rgba(247, 147, 30, 0.4);
+    outline: none;
+  }
+  
+  form button {
+    background-color: #f7931e;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  form button:hover {
+    background-color: #d97c15;
+    transform: scale(1.03);
+  }
+  
+  /* ====== RODAPÉ ====== */
+  footer {
+    background-color: #f7931e;
+    border-top: 3px solid #d97c15;
+  }
+  
+  .social-icon {
+    width: 28px;
+    height: 28px;
+    filter: invert(100%); /* deixa branco */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .social-icon:hover {
+    transform: scale(1.2);
+    opacity: 0.85;
+  }
+  
+  /* ====== RESPONSIVIDADE ====== */
+  @media (max-width: 576px) {
+    .logo {
+      width: 140px;
+    }
+  
+    section.text-center {
+      padding: 40px 15px;
+    }
+  
+    section.text-center h1 {
+      font-size: 1.6rem;
+    }
+  
+    section.text-center p {
+      font-size: 1rem;
+    }
+  }
+  
