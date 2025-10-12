@@ -1,3 +1,4 @@
+Este repositório contém atividades do curso Front-End — React, Módulos 1 e 2, abordando HTML, CSS, JS e Bootstrap
 # SOFTEX (Atividade-1) - Lógica de Programação com JavaScript
 Atividade 1 - agosto/2025 - Lógica de Programação com JavaScript
 <ul> 01. Conversão de Temperatura, 02. FizzBuzz, 03. Verificar Maioridade, 04. Calculadora Básica, 05. Tabuada de Multiplicação </ul>

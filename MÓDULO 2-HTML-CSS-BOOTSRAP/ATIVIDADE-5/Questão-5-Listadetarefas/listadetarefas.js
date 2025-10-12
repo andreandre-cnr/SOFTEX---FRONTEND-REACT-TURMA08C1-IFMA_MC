@@ -1,44 +1,45 @@
-const btnAdicionar = document.getElementById("btnAdicionar");
-const inputTarefa = document.getElementById("novaTarefa");
-const listaTarefas = document.getElementById("listaTarefas");
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.querySelector('#novaTarefa');
+  const btn = document.querySelector('#btnAdicionar');
+  const lista = document.querySelector('#listaTarefas');
+  let contador = 1;
 
-function adicionarTarefa() {
-  const texto = inputTarefa.value.trim();
-  if (texto === "") {
-    alert("Digite uma tarefa antes de adicionar!");
-    return;
-  }
+  btn.addEventListener('click', () => {
+    const texto = input.value.trim();
 
-  const li = document.createElement("li");
-  li.className = "list-group-item d-flex justify-content-between align-items-center";
-  li.textContent = texto;
-
-  const btnRemover = document.createElement("button");
-  btnRemover.textContent = "Remover";
-  btnRemover.className = "btn btn-danger btn-sm remover";
-
-  btnRemover.addEventListener("click", () => {
-    listaTarefas.removeChild(li);
-  });
-
-  li.addEventListener("click", (e) => {
-    if (e.target !== btnRemover) {
-      li.classList.toggle("completed");
+    if (texto === '') {
+      alert('Digite uma tarefa antes de adicionar.');
+      return;
     }
+
+    // Cria item da lista
+    const item = document.createElement('li');
+    item.className = 'list-group-item';
+    item.innerHTML = `
+      <strong>${contador}.</strong>
+      <span>${texto}</span>
+      <div class="checkbox-container">
+        <label><input type="radio" name="tarefa-${contador}" value="feito"> Feito</label>
+        <label><input type="radio" name="tarefa-${contador}" value="nao-feito"> Não feito</label>
+      </div>
+    `;
+
+    // Evento dos checkboxes
+    const radios = item.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        item.classList.remove('feito', 'nao-feito');
+        if (e.target.value === 'feito') {
+          item.classList.add('feito');
+        } else {
+          item.classList.add('nao-feito');
+        }
+      });
+    });
+
+    lista.appendChild(item);
+    input.value = '';
+    input.focus();
+    contador++;
   });
-
-  li.appendChild(btnRemover);
-  listaTarefas.appendChild(li);
-
-  inputTarefa.value = "";
-  inputTarefa.focus();
-}
-
-btnAdicionar.addEventListener("click", adicionarTarefa);
-
-inputTarefa.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault();
-    adicionarTarefa();
-  }
 });

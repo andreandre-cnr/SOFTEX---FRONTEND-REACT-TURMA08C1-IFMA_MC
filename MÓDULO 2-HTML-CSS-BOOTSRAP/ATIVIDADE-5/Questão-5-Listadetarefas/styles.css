@@ -1,21 +1,45 @@
-/* Ajuste de estilo personalizado */
-#listaTarefas li {
+body {
+  font-family: Calibri, sans-serif;
+}
+
+#novaTarefa {
+  min-width: 200px;
+  max-width: 400px;
+}
+
+#btnAdicionar {
+  padding: 8px 20px;
+  font-weight: 600;
+}
+
+.list-group-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  background-color: #e3f2fd;
-  transition: background 0.3s;
+  justify-content: space-between;
+  transition: background-color 0.3s ease;
 }
 
-#listaTarefas li.completed {
+.list-group-item span {
+  flex-grow: 1;
+  margin: 0 10px;
+  word-wrap: break-word;
+}
+
+.list-group-item.feito span {
+  color: green;
   text-decoration: line-through;
-  opacity: 0.7;
 }
 
-#listaTarefas li button.remover {
-  margin-left: 15px; /* espaço entre texto e botão */
-  border-radius: 8px;
+.list-group-item.nao-feito span {
+  color: red;
+}
+
+.checkbox-container {
+  display: flex;
+  gap: 10px;
+}
+
+.checkbox-container label {
+  margin-left: 4px;
+  font-size: 0.9rem;
 }
