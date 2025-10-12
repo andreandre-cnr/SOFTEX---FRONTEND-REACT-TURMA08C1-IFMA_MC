@@ -16,7 +16,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 6px;
 }
 
 .list-group-item span {
@@ -25,13 +26,14 @@ body {
   word-wrap: break-word;
 }
 
-.list-group-item.feito span {
-  color: green;
-  text-decoration: line-through;
+.list-group-item.feito {
+  background-color: #c8f7c5; /* verde claro */
+  color: #1b5e20;
 }
 
-.list-group-item.nao-feito span {
-  color: red;
+.list-group-item.nao-feito {
+  background-color: #ffcdd2; /* vermelho claro */
+  color: #b71c1c;
 }
 
 .checkbox-container {
