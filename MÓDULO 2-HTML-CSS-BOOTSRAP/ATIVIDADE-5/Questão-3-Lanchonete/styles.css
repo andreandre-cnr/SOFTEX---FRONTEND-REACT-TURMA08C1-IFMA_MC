@@ -21,32 +21,20 @@ h1 {
   color: #2b4c7e;
 }
 
-label, input {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
 .label-nome {
   font-weight: bold;
 }
 
 input[type="text"] {
   width: 100%;
-  padding: 6px;
-  margin-bottom: 15px;
-  border-radius: 5px;
+  padding: 8px;
+  margin-bottom: 20px;
+  border-radius: 6px;
   border: 1px solid #ccc;
+  font-size: 15px;
 }
 
+/* --- Categorias --- */
 .categoria {
   margin-bottom: 25px;
 }
@@ -54,28 +42,43 @@ input[type="text"] {
 .categoria h2 {
   background: #2b4c7e;
   color: #fff;
-  padding: 8px;
+  padding: 10px;
   border-radius: 5px;
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .categoria label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #f8f9fa;
-  padding: 8px;
-  border-radius: 5px;
-  margin-bottom: 5px;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  border: 1px solid #eee;
 }
 
 .categoria span {
-  font-size: 13px;
+  font-size: 14px;
   color: #666;
+  margin-left: 8px;
 }
 
+input[type="number"] {
+  width: 70px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* --- Botões --- */
 .botoes {
   display: flex;
   justify-content: space-between;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 button {
@@ -84,6 +87,7 @@ button {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
+  font-size: 15px;
 }
 
 #btnCalcular {
@@ -95,6 +99,7 @@ button {
   background-color: #ccc;
 }
 
+/* --- Resultado --- */
 #resultado {
   margin-top: 30px;
   border-top: 2px solid #2b4c7e;
@@ -102,7 +107,7 @@ button {
 }
 
 #listaPedidos p {
-  margin: 5px 0;
+  margin: 6px 0;
 }
 
 .total {
