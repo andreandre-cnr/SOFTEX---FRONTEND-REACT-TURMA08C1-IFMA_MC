@@ -67,5 +67,43 @@ document.addEventListener('DOMContentLoaded', () => {
     contador++;
     input.value = '';
     input.focus();
+    // Botão Gerar Resultado
+const btnResultado = document.querySelector('#btnResultado');
+const resultadoDiv = document.querySelector('#resultadoTarefas');
+
+btnResultado.addEventListener('click', () => {
+  const tarefas = document.querySelectorAll('#listaTarefas .list-group-item');
+  let feitas = 0;
+  let pendentes = 0;
+
+  tarefas.forEach(tarefa => {
+    if (tarefa.classList.contains('feito')) {
+      feitas++;
+    } else {
+      pendentes++;
+    }
+  });
+
+  const total = feitas + pendentes;
+  const percentual = total > 0 ? Math.round((feitas / total) * 100) : 0;
+
+  let mensagem = '';
+  if (percentual === 100) {
+    mensagem = 'Excelente! Todas as tarefas concluídas! 🎯';
+  } else if (percentual >= 70) {
+    mensagem = 'Ótimo desempenho! Continue assim 💪';
+  } else if (percentual >= 40) {
+    mensagem = 'Bom progresso! Ainda há tarefas pendentes.';
+  } else {
+    mensagem = 'Vamos melhorar! Você consegue!';
+  }
+
+  resultadoDiv.innerHTML = `
+    <p>✔️ Tarefas concluídas: ${feitas}</p>
+    <p>❌ Tarefas pendentes: ${pendentes}</p>
+    <p>⭐ Desempenho: ${percentual}% - ${mensagem}</p>
+  `;
+});
+
   });
 });
