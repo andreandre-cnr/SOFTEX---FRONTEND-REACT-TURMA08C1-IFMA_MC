@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book.net | Reservas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+    <a class="navbar-brand d-flex align-items-center" href="../index.html">
+      <img src="../img/logo-booknet.png" alt="Book.net" width="40" class="me-2">
+      <span>Book.net</span>
+    </a>
+  </nav>
+
+  <div class="container my-4">
+    <h2 class="text-center mb-4">Fila de Reservas</h2>
+
+    <form id="formReserva" class="card p-4 shadow-sm mb-4">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label class="form-label">Cliente *</label>
+          <input type="text" class="form-control" id="clienteReserva" required>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Livro *</label>
+          <input type="text" class="form-control" id="livroReserva" required>
+        </div>
+      </div>
+      <div class="text-end">
+        <button type="submit" class="btn btn-success">Adicionar à Fila</button>
+      </div>
+    </form>
+
+    <table class="table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>Livro</th>
+          <th>Cliente</th>
+          <th>Posição na Fila</th>
+        </tr>
+      </thead>
+      <tbody id="listaReservas"></tbody>
+    </table>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script src="js/reservas.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/main.js"></script>
+
+</body>
+</html>
