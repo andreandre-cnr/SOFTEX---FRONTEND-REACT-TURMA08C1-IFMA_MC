@@ -12,36 +12,47 @@ body {
   font-weight: 600;
 }
 
-.list-group-item {
+/* Item da lista - aumenta especificidade em relação ao Bootstrap */
+ul#listaTarefas .list-group-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
   border-radius: 6px;
+  margin-bottom: 6px;
+  padding: 10px 14px;
 }
 
-.list-group-item span {
+/* Texto da tarefa */
+ul#listaTarefas .list-group-item span {
   flex-grow: 1;
-  margin: 0 10px;
+  margin: 0 12px;
   word-wrap: break-word;
 }
 
-.list-group-item.feito {
-  background-color: #c8f7c5; /* verde claro */
-  color: #1b5e20;
+/* Estado FEITO - fundo verde */
+ul#listaTarefas .list-group-item.feito {
+  background-color: #c8f7c5 !important; /* verde claro */
+  color: #1b5e20 !important;
 }
 
-.list-group-item.nao-feito {
-  background-color: #ffcdd2; /* vermelho claro */
-  color: #b71c1c;
+/* Estado NÃO FEITO - fundo vermelho */
+ul#listaTarefas .list-group-item.nao-feito {
+  background-color: #ffcdd2 !important; /* vermelho claro */
+  color: #b71c1c !important;
 }
 
+/* pequenas melhorias visuais para os rádios */
 .checkbox-container {
   display: flex;
   gap: 10px;
+  align-items: center;
+  white-space: nowrap;
 }
 
-.checkbox-container label {
-  margin-left: 4px;
-  font-size: 0.9rem;
+/* espaçamento entre número e texto */
+ul#listaTarefas .numero-tarefa {
+  width: 36px;
+  flex-shrink: 0;
+  font-weight: 700;
 }
