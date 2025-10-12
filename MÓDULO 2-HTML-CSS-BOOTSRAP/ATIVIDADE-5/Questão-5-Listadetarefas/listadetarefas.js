@@ -6,63 +6,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
   btn.addEventListener('click', () => {
     const texto = input.value.trim();
-
     if (texto === '') {
-      alert('Digite uma tarefa antes de adicionar.');
+      alert('Digite uma tarefa!');
       return;
     }
 
-    // Cria item da lista
-    const item = document.createElement('li');
-    item.className = 'list-group-item d-flex align-items-center';
+    // Cria os elementos
+    const li = document.createElement('li');
+    li.className = 'list-group-item nao-feito';
 
-    // estrutura interna: numero | texto | radios
-    item.innerHTML = `
-      <div class="numero-tarefa">${contador}.</div>
-      <span class="texto-tarefa">${escapeHtml(texto)}</span>
-      <div class="checkbox-container" role="radiogroup" aria-label="Status da tarefa">
-        <label class="me-2"><input type="radio" name="tarefa-${contador}" value="feito"> Feito</label>
-        <label><input type="radio" name="tarefa-${contador}" value="nao-feito"> Não feito</label>
-      </div>
-    `;
+    const numero = document.createElement('span');
+    numero.className = 'numero-tarefa';
+    numero.textContent = `${contador}. `;
 
-    // Delegação: adiciona listener ao container de radios do item
-    const radiosContainer = item.querySelector('.checkbox-container');
-    radiosContainer.addEventListener('change', (e) => {
-      // encontra o li pai (item)
-      const li = e.currentTarget.closest('li');
-      if (!li) return;
+    const textoTarefa = document.createElement('span');
+    textoTarefa.className = 'texto-tarefa';
+    textoTarefa.textContent = texto;
 
-      // remove ambos os estados e aplica só o selecionado
-      li.classList.remove('feito', 'nao-feito');
+    // Contêiner dos checkboxes
+    const checkboxContainer = document.createElement('div');
+    checkboxContainer.className = 'checkbox-container';
 
-      // procura qual radio está marcado
-      const selecionado = li.querySelector('input[type="radio"]:checked');
-      if (!selecionado) return;
+    // Radios "feito" e "não feito"
+    const radioFeito = document.createElement('input');
+    radioFeito.type = 'radio';
+    radioFeito.name = `tarefa${contador}`;
+    radioFeito.value = 'feito';
 
-      if (selecionado.value === 'feito') {
-        li.classList.add('feito');
-      } else {
-        li.classList.add('nao-feito');
-      }
+    const labelFeito = document.createElement('label');
+    labelFeito.textContent = 'Feito';
+
+    const radioNaoFeito = document.createElement('input');
+    radioNaoFeito.type = 'radio';
+    radioNaoFeito.name = `tarefa${contador}`;
+    radioNaoFeito.value = 'nao-feito';
+    radioNaoFeito.checked = true;
+
+    const labelNaoFeito = document.createElement('label');
+    labelNaoFeito.textContent = 'Não feito';
+
+    // Ações dos radios
+    radioFeito.addEventListener('change', () => {
+      li.classList.remove('nao-feito');
+      li.classList.add('feito');
+      radioFeito.disabled = true;
+      radioNaoFeito.disabled = true;
     });
 
-    // adiciona item na lista
-    lista.appendChild(item);
+    radioNaoFeito.addEventListener('change', () => {
+      li.classList.remove('feito');
+      li.classList.add('nao-feito');
+    });
 
-    // limpa campo
+    // Montagem dos elementos
+    checkboxContainer.append(radioFeito, labelFeito, radioNaoFeito, labelNaoFeito);
+    li.append(numero, textoTarefa);
+    li.appendChild(checkboxContainer);
+    lista.appendChild(li);
+
+    contador++;
     input.value = '';
     input.focus();
-    contador++;
   });
-
-  // função pequena para evitar XSS ao inserir texto do usuário
-  function escapeHtml(unsafe) {
-    return unsafe
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
 });

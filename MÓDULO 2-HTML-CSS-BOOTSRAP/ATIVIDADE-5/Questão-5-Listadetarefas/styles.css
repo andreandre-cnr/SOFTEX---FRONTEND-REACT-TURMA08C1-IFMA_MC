@@ -1,58 +1,75 @@
 body {
   font-family: Calibri, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Área central */
+.container {
+  max-width: 700px;
+}
+
+/* Campo de texto e botão */
+.input-group {
+  justify-content: center;
+  margin-bottom: 25px;
 }
 
 #novaTarefa {
-  min-width: 200px;
+  width: 70%;
   max-width: 400px;
 }
 
 #btnAdicionar {
-  padding: 8px 20px;
+  margin-left: 12px;
   font-weight: 600;
 }
 
-/* Item da lista - aumenta especificidade em relação ao Bootstrap */
-ul#listaTarefas .list-group-item {
+/* Espaço geral da lista */
+#listaTarefas {
+  margin-top: 40px;
+}
+
+/* Cada tarefa */
+.list-group-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  transition: background-color 0.25s ease, color 0.25s ease;
-  border-radius: 6px;
-  margin-bottom: 6px;
-  padding: 10px 14px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-/* Texto da tarefa */
-ul#listaTarefas .list-group-item span {
+/* Numeração e texto */
+.numero-tarefa {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.texto-tarefa {
   flex-grow: 1;
-  margin: 0 12px;
   word-wrap: break-word;
+  margin-right: 20px;
 }
 
-/* Estado FEITO - fundo verde */
-ul#listaTarefas .list-group-item.feito {
-  background-color: #c8f7c5 !important; /* verde claro */
-  color: #1b5e20 !important;
-}
-
-/* Estado NÃO FEITO - fundo vermelho */
-ul#listaTarefas .list-group-item.nao-feito {
-  background-color: #ffcdd2 !important; /* vermelho claro */
-  color: #b71c1c !important;
-}
-
-/* pequenas melhorias visuais para os rádios */
+/* Grupo de botões (feito/não feito) */
 .checkbox-container {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  white-space: nowrap;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-/* espaçamento entre número e texto */
-ul#listaTarefas .numero-tarefa {
-  width: 36px;
-  flex-shrink: 0;
-  font-weight: 700;
+/* Estados */
+.list-group-item.feito {
+  background-color: #e0e0e0 !important;
+  color: #6c757d !important;
+  text-decoration: line-through;
+  border: 1px solid #ccc !important;
+}
+
+.list-group-item.nao-feito {
+  background-color: #fff !important;
+  color: #212529 !important;
+  border: 1px solid #dee2e6 !important;
 }
