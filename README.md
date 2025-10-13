@@ -17,4 +17,7 @@ Atividade 1 - setembro/2025 - Pedido de vendas
 <ul> Atividade 1 (data por extenso); Atividade 2 (simulador de empréstimo); Atividade 3 (comanda lanchonete IFMA); Atividade 4 (quiz interativo); Atividade 5 (lista de tarefas) </ul>
 
 # SOFTEX (Atividade-6) - Bootstrap
-Atividade 6 - setembro/2025 - Booknet
+Atividade 6 - outubro/2025 - Booknet
+
+# SOFTEX (Atividade-7) - Módulo 2 - Projeto Integrador - Rede Nave
+Projeto Integrador - outubro/2025 - REDENAVE
