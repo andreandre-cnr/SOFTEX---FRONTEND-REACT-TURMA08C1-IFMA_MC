@@ -14,7 +14,7 @@ Atividade 1 - setembro/2025 - Bootstrap
 Atividade 1 - setembro/2025 - Pedido de vendas
 
 # SOFTEX (Atividade-5) - Bootstrap
-<ul> Questão 1 (data por extenso); Questão 2 (simulador de empréstimo); Questão 3 (comanda lanchonete IFMA); Questão 4 (quiz interativo); Questão 5 (lista de tarefas) </ul>
+<ul> Atividade 1 (data por extenso); Atividade 2 (simulador de empréstimo); Atividade 3 (comanda lanchonete IFMA); Atividade 4 (quiz interativo); Atividade 5 (lista de tarefas) </ul>
 
 # SOFTEX (Atividade-6) - Bootstrap
 Atividade 6 - setembro/2025 - Booknet
