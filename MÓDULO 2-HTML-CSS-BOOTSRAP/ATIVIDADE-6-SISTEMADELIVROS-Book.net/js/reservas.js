@@ -1,4 +1,6 @@
 // js/reservas.js
+import { verificarLogin } from './utils.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Página de reservas carregada.");
 

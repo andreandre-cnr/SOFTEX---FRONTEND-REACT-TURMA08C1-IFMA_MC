@@ -1,4 +1,6 @@
 // js/alugueis.js
+import { verificarLogin } from './utils.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Página de aluguéis carregada.");
 

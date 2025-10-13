@@ -1,5 +1,6 @@
 // js/livros.js
 // Busca na Open Library + filtros + verificação de login para ações
+import { verificarLogin } from './utils.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const qInput = document.getElementById('q');
@@ -20,6 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function getUserSession() {
     return JSON.parse(localStorage.getItem('bn_user') || 'null');
   }
+
+  // livros.js
+function cadastrarLivro(livro) {
+  const lista = JSON.parse(localStorage.getItem("livros")) || [];
+  lista.push(livro);
+  localStorage.setItem("livros", JSON.stringify(lista));
+}
 
   function debounce(fn, delay=400) {
     let t;

@@ -1,4 +1,6 @@
 // js/clientes.js
+import { verificarLogin } from './utils.js';
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("Página de clientes carregada.");
 
@@ -13,6 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const nome = form.querySelector("#nome").value.trim();
     const cpf = form.querySelector("#cpf").value.trim();
     const telefone = form.querySelector("#telefone").value.trim();
+
+    // clientes.js
+function cadastrarCliente(cliente) {
+  const lista = JSON.parse(localStorage.getItem("clientes")) || [];
+  lista.push(cliente);
+  localStorage.setItem("clientes", JSON.stringify(lista));
+}
 
     if (!nome || !cpf || !telefone) {
       showAlert("Preencha todos os campos obrigatórios!", "warning");

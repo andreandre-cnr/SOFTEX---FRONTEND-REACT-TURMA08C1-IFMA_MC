@@ -1,4 +1,6 @@
 // js/auth.js
+import { verificarLogin } from './utils.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // elementos
   const tabLinks = document.querySelectorAll('#tabAuth a');
