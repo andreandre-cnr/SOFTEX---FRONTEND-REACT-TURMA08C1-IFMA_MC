@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Progresso - Rede NAVE</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="section-title mb-4">Painel de Progresso</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card p-3">
+          <h5>Seu Desempenho</h5>
+          <canvas id="graficoProgresso"></canvas>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-3 text-center">
+          <h5>Certificação</h5>
+          <p>Conclua suas trilhas e gere seu certificado automaticamente.</p>
+          <button class="btn btn-primary" id="btnCertificado"><i class="fa-solid fa-award me-2"></i>Gerar Certificado</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast-container"></div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/progresso.js"></script>
+</body>
+</html>
