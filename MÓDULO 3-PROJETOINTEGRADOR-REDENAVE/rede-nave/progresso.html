@@ -1,50 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <style>
-.grafico-texto {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: #7A2E6C;
-}
-</style>
-
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Progresso - Rede NAVE</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0ad1c1a.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #F9F5F7;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .section-title {
+      color: #7A2E6C;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background-color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 220px;
+      width: 220px;
+      margin: 0 auto;
+    }
+
+    .grafico-texto {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: #7A2E6C;
+    }
+
+    .btn-primary {
+      background-color: #F2A950;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #d98d35;
+      transform: scale(1.05);
+    }
+
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1055;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #7A2E6C;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="container py-5">
-    <h2 class="section-title mb-4">Painel de Progresso</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card p-3 text-center">
-  <h5 class="mb-3">Seu Desempenho</h5>
-  <div class="chart-container mx-auto" style="position: relative; height:220px; width:220px;">
-    <canvas id="graficoProgresso"></canvas>
-    <div id="graficoTexto" class="grafico-texto"></div>
-  </div>
-  <small class="text-muted mt-2 d-block">Progresso das trilhas de aprendizagem</small>
-</div>
 
-          <h5>Seu Desempenho</h5>
-          <canvas id="graficoProgresso"></canvas>
-        </div>
+  <div class="container text-center d-flex flex-column justify-content-center align-items-center" style="min-height: 80vh;">
+    <h2 class="section-title mb-4">Painel de Progresso</h2>
+
+    <div class="card">
+      <h5 class="mb-3">Seu Desempenho</h5>
+      <div class="chart-container">
+        <canvas id="graficoProgresso"></canvas>
+        <div id="graficoTexto" class="grafico-texto"></div>
       </div>
-      <div class="col-md-6">
-        <div class="card p-3 text-center">
-          <h5>Certificação</h5>
-          <p>Conclua suas trilhas e gere seu certificado automaticamente.</p>
-          <button class="btn btn-primary" id="btnCertificado"><i class="fa-solid fa-award me-2"></i>Gerar Certificado</button>
-        </div>
-      </div>
+      <small class="text-muted mt-3 d-block">Progresso das trilhas de aprendizagem</small>
     </div>
+
+    <button class="btn btn-primary px-4 mt-4" id="btnCertificado">
+      <i class="fa-solid fa-award me-2"></i>Gerar Certificado
+    </button>
   </div>
+
+  <footer>
+    <p>&copy; 2025 Rede NAVE - Natureza, Arte, Vida e Emancipação Feminina</p>
+  </footer>
+
   <div class="toast-container"></div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
