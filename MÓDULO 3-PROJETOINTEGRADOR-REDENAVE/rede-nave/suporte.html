@@ -2,14 +2,71 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suporte - Rede NAVE</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0ad1c1a.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #F9F5F7;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .section-title {
+      color: #7A2E6C;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      background-color: #fff;
+      padding: 2rem;
+      width: 380px;
+    }
+
+    .btn-primary {
+      background-color: #F2A950;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #d98d35;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #7A2E6C;
+      font-size: 0.9rem;
+    }
+
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1055;
+    }
+  </style>
 </head>
 <body>
-  <div class="container py-5">
-    <h2 class="section-title mb-4">Canal de Suporte</h2>
-    <form class="card p-4" id="formSuporte">
+
+  <div class="container text-center d-flex flex-column justify-content-center align-items-center">
+    <h2 class="section-title">Canal de Suporte</h2>
+
+    <form class="card text-start" id="formSuporte">
       <div class="mb-3">
         <label class="form-label">Nome</label>
         <input type="text" id="nomeSuporte" class="form-control" placeholder="Digite seu nome" required>
@@ -20,13 +77,19 @@
       </div>
       <div class="mb-3">
         <label class="form-label">Mensagem</label>
-        <textarea class="form-control" id="mensagemSuporte" rows="4" placeholder="Descreva sua dúvida" required></textarea>
+        <textarea id="mensagemSuporte" class="form-control" rows="4" placeholder="Descreva sua dúvida" required></textarea>
       </div>
-      <button class="btn btn-primary" type="submit">Enviar</button>
+      <button class="btn btn-primary w-100" type="submit">Enviar</button>
     </form>
   </div>
+
+  <footer>
+    <p>&copy; 2025 Rede NAVE - Natureza, Arte, Vida e Emancipação Feminina</p>
+  </footer>
+
   <div class="toast-container"></div>
+
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/suporte.js"></script>
 </body>
 </html>
