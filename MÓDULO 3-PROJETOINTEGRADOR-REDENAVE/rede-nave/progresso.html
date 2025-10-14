@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+  <style>
+.grafico-texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #7A2E6C;
+}
+</style>
+
   <meta charset="UTF-8">
   <title>Progresso - Rede NAVE</title>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -11,7 +23,15 @@
     <h2 class="section-title mb-4">Painel de Progresso</h2>
     <div class="row">
       <div class="col-md-6">
-        <div class="card p-3">
+        <div class="card p-3 text-center">
+  <h5 class="mb-3">Seu Desempenho</h5>
+  <div class="chart-container mx-auto" style="position: relative; height:220px; width:220px;">
+    <canvas id="graficoProgresso"></canvas>
+    <div id="graficoTexto" class="grafico-texto"></div>
+  </div>
+  <small class="text-muted mt-2 d-block">Progresso das trilhas de aprendizagem</small>
+</div>
+
           <h5>Seu Desempenho</h5>
           <canvas id="graficoProgresso"></canvas>
         </div>
